@@ -1,1 +1,68 @@
-<p>task works!</p>
+<div class="taskItem" *ngIf="Task">
+  
+
+  <div class="card" style="width: 18rem;" *ngIf="Task.Mode==formMode.Read">
+    <div class="card-body">
+      <h5 class="card-title"  >{{Task.Description}} <span class="ctlButtons"><i class="bi bi-pencil"></i> <i class="bi bi-tr"></i> <i class="bi bi-trash"></i> </span></h5> 
+      <h6 class="card-subtitle mb-2 text-muted">{{Task.User?.Name}} </h6>
+      <p class="card-text">   <ng-container *ngTemplateOutlet="Status"></ng-container>  <i *ngIf="Task.RequiredByDate"> ({{Task.RequiredByDate}})</i> </p>
+   
+      <a href="#" class="card-link">Comments</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;" *ngIf="Task.Mode==formMode.Edit">
+    <div class="card-body">
+
+
+      <div class="form-group">
+        <label>Description</label>
+        <input class="form-control" [(ngModel)]="Task.Description" placeholder="Content of task...">
+        <ng-container *ngIf="!Task.Description"> <ng-container *ngTemplateOutlet="Required"></ng-container></ng-container>
+      </div>
+      <div class="form-group">
+        <label>Required by Date</label>
+        <input class="form-control" type="date" [(ngModel)]="Task.RequiredByDate">
+      </div>
+      <div class="form-group">
+        <label>Task Status</label>
+        <select class="form-control" [(ngModel)]="Task.TaskStatus">
+          <option [value]="taskStatusList.Active">Active</option>
+          <option [value]="taskStatusList.Done">Done</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Task Type</label>
+        <select class="form-control" [(ngModel)]="Task.TaskType">
+          <option [value]="taskTypeList.TaskTypeA"> Type A</option>
+          <option [value]="taskTypeList.TaskTypeB"> Type B</option>
+          <option [value]="taskTypeList.TaskTypeC"> Type C</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Assigned To</label>
+        <select class="form-control" [(ngModel)]="Task.AssignedTo" (change)="MapUser()">
+          <option *ngFor="let user of users" [value]="user.ID"> {{user.Name}}</option>
+
+        </select>
+        <ng-container *ngIf="!Task.AssignedTo">   <ng-container *ngTemplateOutlet="Required"></ng-container></ng-container>
+
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <button type="button" class="btn btn-primary" (click)="OnSave.emit(Task)">Save</button>
+    </div>
+  </div>
+  <ng-template #Required>
+    <small class="form-text text-muted">* Required</small>
+  </ng-template>
+
+  <ng-template #Status>
+    <span class="badge rounded-pill text-bg-primary" *ngIf="Task.TaskStatus==taskStatusList.Active">Active</span>
+    <span class="badge rounded-pill text-bg-success" *ngIf="Task.TaskStatus==taskStatusList.Done">Done</span>
+  </ng-template>
+
+
+</div>
+
