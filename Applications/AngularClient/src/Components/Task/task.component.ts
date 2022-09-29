@@ -7,6 +7,8 @@ import { TaskStatusList } from '../../Models/TaskStatusList';
 import { TaskTypeList } from '../../Models/TaskTypeList';
 import { UserMdl } from '../../Models/UserMdl';
 import { UserService } from '../../Services/UserService';
+import { TaskEvent } from './TaskEvent';
+import { TaskEventList } from './TaskEventList';
 
 @Component({
   selector: 'task',
@@ -20,9 +22,9 @@ export class TaskComponent implements OnInit {
   formMode = FormMode;
   taskStatusList = TaskStatusList;
   taskTypeList = TaskTypeList;
-
+  taskEventList = TaskEventList;
   @Input() Task?: TaskMdl = undefined;
-  @Output() OnSave = new EventEmitter<TaskMdl>();
+  @Output() OnEvent = new EventEmitter<TaskEvent>();
 
   users: UserMdl[] = [];
   constructor(  private userService: UserService) {

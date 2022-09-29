@@ -3,7 +3,7 @@
 
   <div class="card" style="width: 18rem;" *ngIf="Task.Mode==formMode.Read">
     <div class="card-body">
-      <h5 class="card-title"  >{{Task.Description}} <span class="ctlButtons"><i class="bi bi-pencil"></i> <i class="bi bi-tr"></i> <i class="bi bi-trash"></i> </span></h5> 
+      <h5 class="card-title"  >{{Task.Description}} <span class="ctlButtons"><i class="bi bi-pencil" (click)="OnEvent.emit({Type:taskEventList.Edit,Task:Task})"></i> <i class="bi bi-tr"></i> <i class="bi bi-trash"></i> </span></h5> 
       <h6 class="card-subtitle mb-2 text-muted">{{Task.User?.Name}} </h6>
       <p class="card-text">   <ng-container *ngTemplateOutlet="Status"></ng-container>  <i *ngIf="Task.RequiredByDate"> ({{Task.RequiredByDate}})</i> </p>
    
@@ -51,7 +51,7 @@
 
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-primary" [disabled]="!Valid" (click)="OnSave.emit(Task)">Save</button>
+      <button type="button" class="btn btn-primary" [disabled]="!Valid" (click)="OnEvent.emit({Type:taskEventList.Save,Task:Task})">Save</button>
     </div>
   </div>
   <ng-template #Required>

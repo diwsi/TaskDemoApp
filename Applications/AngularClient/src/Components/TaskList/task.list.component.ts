@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { TaskMdl } from '../../Models/TaskMdl';
 import { TaskService } from '../../Services/TaskService';
-import { TaskComponent } from '../Task/task.component';  
+import { TaskComponent } from '../Task/task.component';
 import { FormMode } from '../../Models/FormMode';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
+import { TaskEvent } from '../Task/TaskEvent';
+import { TaskEventList } from '../Task/TaskEventList';
+import { CommandService } from '../../Services/CommandService';
 
 @Component({
   selector: 'task-list',
@@ -18,37 +21,52 @@ export class TaskListComponent implements OnInit {
 
   tasks: TaskMdl[] = [];
 
-  constructor(private taskService: TaskService, private route: ActivatedRoute) {
+  constructor(private taskService: TaskService, private commandService: CommandService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-     
+
     this.loadTasks();
-    this.registerRoutes();
+    this.registerCommands();
   }
 
-  loadTasks(): void {    
+  loadTasks(): void {
     this.tasks = this.taskService.List();
   }
 
-  newTask(): void { 
+  newTask(): void {
     let task: TaskMdl = this.taskService.Default;
     this.tasks.push(task);
   }
 
-  public SaveTask(task: TaskMdl): void {
-  
-    task.Mode = FormMode.Read;
-    
+  public OnTaskEvent(event: TaskEvent): void {
+    let c: string = this.commandService.PREF_COMMAND;
+    switch (event.Type) {
+      case TaskEventList.Save:
+        event.Task.Mode = FormMode.Read;
+
+        this.commandService.SetComand({ c: '' })
+        break;
+      case TaskEventList.Edit:
+        let id = this.commandService.PREF_ID;
+        this.commandService.SetComand({ c: this.commandService.PREF_EDIT, id: event.Task.ID })
+        break;
+      default:
+    }
   }
 
-  registerRoutes(): void {
-    this.route.queryParams.subscribe(params => {
+  registerCommands(): void {
 
-      switch (params['c']) {
-        case 'new':
+    this.route.queryParams.subscribe(params => {
+      debugger
+      switch (params[this.commandService.PREF_COMMAND]) {
+        case this.commandService.PREF_NEW:
           this.newTask();
+          break;
+        case this.commandService.PREF_EDIT:
+          let task = this.tasks.find(d => d.ID == params[this.commandService.PREF_ID]);
+          if (task != null) task.Mode = FormMode.Read;
           break;
         default:
       }
