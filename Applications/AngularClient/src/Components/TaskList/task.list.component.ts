@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { TaskMdl } from '../../Models/TaskMdl';
 import { TaskService } from '../../Services/TaskService';
-import { TaskComponent } from '../Task/task.component'; 
-import { UserService } from '../../Services/UserService';
-import { UserMdl } from '../../Models/UserMdl';
+import { TaskComponent } from '../Task/task.component';  
 import { FormMode } from '../../Models/FormMode';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'task-list',
   standalone: true,
-  imports: [CommonModule, TaskComponent],
+  imports: [CommonModule, TaskComponent, RouterModule],
   templateUrl: './task.list.component.html',
   styleUrls: ['./task.list.component.css']
 })
@@ -18,17 +17,18 @@ export class TaskListComponent implements OnInit {
 
 
   tasks: TaskMdl[] = [];
- 
-  constructor(private taskService: TaskService) {
+
+  constructor(private taskService: TaskService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
+     
     this.loadTasks();
+    this.registerRoutes();
   }
 
-  loadTasks(): void {
-    debugger
+  loadTasks(): void {    
     this.tasks = this.taskService.List();
   }
 
@@ -37,10 +37,22 @@ export class TaskListComponent implements OnInit {
     this.tasks.push(task);
   }
 
-  SaveTask(task: TaskMdl): void {
+  public SaveTask(task: TaskMdl): void {
   
     task.Mode = FormMode.Read;
     
+  }
+
+  registerRoutes(): void {
+    this.route.queryParams.subscribe(params => {
+
+      switch (params['c']) {
+        case 'new':
+          this.newTask();
+          break;
+        default:
+      }
+    })
   }
 
 }

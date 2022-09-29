@@ -44,4 +44,8 @@ export class TaskComponent implements OnInit {
       this.Task.User = user;
     }
   }
+
+  get Valid(): boolean {
+    return (this.Task?.Description && this.Task?.AssignedTo) != undefined
+  }
 }

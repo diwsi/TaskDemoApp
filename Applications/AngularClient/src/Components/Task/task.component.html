@@ -51,7 +51,7 @@
 
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-primary" (click)="OnSave.emit(Task)">Save</button>
+      <button type="button" class="btn btn-primary" [disabled]="!Valid" (click)="OnSave.emit(Task)">Save</button>
     </div>
   </div>
   <ng-template #Required>

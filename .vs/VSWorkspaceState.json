@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Applications",
+    "\\Applications\\AngularClient",
+    "\\Applications\\AngularClient\\src",
+    "\\Applications\\AngularClient\\src\\app",
+    "\\Applications\\AngularClient\\src\\Components",
+    "\\Applications\\AngularClient\\src\\Components\\Task",
+    "\\Applications\\AngularClient\\src\\Components\\TaskList",
+    "\\Applications\\AngularClient\\src\\Models",
+    "\\Applications\\AngularClient\\src\\Services"
   ],
-  "SelectedNode": "\\C:\\Users\\Diwsi\\Source\\Repos\\TaskDemoApp",
+  "SelectedNode": "\\Applications\\AngularClient\\src\\Components\\Task\\task.component.html",
   "PreviewInSolutionExplorer": false
 }
