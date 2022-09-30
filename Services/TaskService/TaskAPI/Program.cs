@@ -10,15 +10,18 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var connString = builder.Configuration["ConnectionString"];
 builder.Services.AddScoped<IRepository<Models.Task>, TaskRepository>(sp =>
-{
-    
-    return new TaskRepository(builder.Configuration["ConnectionString"]);
+{    
+    return new TaskRepository(connString);
 });
 builder.Services.AddScoped<IRepository<Models.User>, UserRepository>(sp =>
 {
-
-    return new UserRepository(builder.Configuration["ConnectionString"]);
+    return new UserRepository(connString);
+});
+builder.Services.AddScoped<IRepository<Models.Comments>, CommentRepository>(sp =>
+{
+    return new CommentRepository(connString);
 });
 // Add services to the container.
 

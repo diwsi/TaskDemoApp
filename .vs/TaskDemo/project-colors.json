@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ebe8d900-54cb-4668-bb0f-a054d995de49": {
+      "ProjectGuid": "ebe8d900-54cb-4668-bb0f-a054d995de49",
+      "DisplayName": "SqlServerRepository",
+      "ColorIndex": 0
+    },
+    "7a073151-6c40-402b-99bb-3fc81a0410d5": {
+      "ProjectGuid": "7a073151-6c40-402b-99bb-3fc81a0410d5",
+      "DisplayName": "AngularClient",
+      "ColorIndex": 1
+    },
+    "b3c1cf4a-32c2-40e7-8cd1-5569cb3ab1f3": {
+      "ProjectGuid": "b3c1cf4a-32c2-40e7-8cd1-5569cb3ab1f3",
+      "DisplayName": "TaskAPI",
+      "ColorIndex": 2
+    },
+    "1c279e8e-3be9-41c9-9e00-3f7fda15a52a": {
+      "ProjectGuid": "1c279e8e-3be9-41c9-9e00-3f7fda15a52a",
+      "DisplayName": "Gateway",
+      "ColorIndex": 3
+    },
+    "8c0020cb-2467-4f97-b745-50e33a11fdd3": {
+      "ProjectGuid": "8c0020cb-2467-4f97-b745-50e33a11fdd3",
+      "DisplayName": "Models",
+      "ColorIndex": 4
+    },
+    "72e5d047-31a4-4de0-8797-3de26f10a3a8": {
+      "ProjectGuid": "72e5d047-31a4-4de0-8797-3de26f10a3a8",
+      "DisplayName": "DataRepository",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

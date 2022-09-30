@@ -21,7 +21,7 @@ namespace SqlServerRepository
         {
             var query = @"select t.*, u.Name 
                         from dbo.Task t
-                        left join dbo.[User] u on t.UserID=u.ID";
+                        left join dbo.[User] u on t.AssignedTo=u.ID";
             var result = new List<Models.Task>();
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -49,6 +49,7 @@ namespace SqlServerRepository
                             Description = rdr.IsDBNull("Description") ? string.Empty : rdr["Description"].ToString(),
                             NextActionDate = rdr.IsDBNull("NextActionDate") ? null : DateTime.Parse(rdr["NextActionDate"].ToString()),
                             RequiredByDate = rdr.IsDBNull("RequiredByDate") ? null : DateTime.Parse(rdr["RequiredByDate"].ToString()),
+                            AssignedTo = rdr.IsDBNull("AssignedTo") ? null : Guid.Parse(rdr["AssignedTo"].ToString()),
                             TaskStatus = rdr.IsDBNull("TaskStatus") ? Models.TaskStatus.Active : (Models.TaskStatus)int.Parse(rdr["TaskStatus"].ToString()),
                             TaskType = rdr.IsDBNull("TaskType") ? TaskType.TaskTypeA : (TaskType)int.Parse(rdr["TaskType"].ToString()),
                             User = rdr.IsDBNull("Name") ? null : new User() { Name = rdr["Name"].ToString() }
@@ -82,7 +83,7 @@ namespace SqlServerRepository
            ,[Description]
            ,[TaskStatus]
            ,[TaskType]
-           ,[UserID]
+           ,[AssignedTo]
            ,[NextActionDate])
             VALUES
            (@ID
@@ -90,7 +91,7 @@ namespace SqlServerRepository
            ,@Description
            ,@TaskStatus
            ,@TaskType
-           ,@UserID
+           ,@AssignedTo
            ,@NextActionDate)";
             model.ID = Guid.NewGuid();
 
@@ -109,7 +110,7 @@ namespace SqlServerRepository
             ,[Description] = @Description
             ,[TaskStatus] =@TaskStatus
             ,[TaskType] = @TaskType
-            ,[UserID] = @UserID
+            ,[AssignedTo] = @AssignedTo
             ,[NextActionDate] =  ( select top 1 MIN(ReminderDate) from Comments where TaskID=@ID and ReminderDate>GETDATE())
         WHERE ID=@ID";
 
@@ -147,7 +148,7 @@ namespace SqlServerRepository
             BindParam(command, "@Description", model.Description);
             BindParam(command, "@TaskStatus", model.TaskStatus);
             BindParam(command, "@TaskType", model.TaskType);
-            BindParam(command, "@UserID", model.User?.ID);
+            BindParam(command, "@AssignedTo", model.AssignedTo);
             BindParam(command, "@NextActionDate", model.NextActionDate);
             return command;
         }

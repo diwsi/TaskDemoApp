@@ -9,6 +9,7 @@ import { BaseService } from './BaseService';
 export class CommentService extends BaseService<CommentMdl> {
   constructor(httpClient: HttpClient) {
     super(httpClient);
+    this.EndPoint = "/task/api/Comment"
   }
 
 }
