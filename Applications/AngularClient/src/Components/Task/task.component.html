@@ -53,7 +53,7 @@
     </div>
     <div class="card-footer">
       <button type="button" class="btn btn-primary" [disabled]="!Valid" (click)="Emit({Type:taskEventList.Save,Task:Task})">Save</button>
-      <button type="button" class="btn btn-danger"   (click)="Task.Mode = formMode.Read">Cancel</button>
+      <button type="button" class="btn btn-danger"  style="float:right" (click)="Task.Mode = formMode.Read">Cancel</button>
     </div>
   </div>
   <ng-template #Required>
