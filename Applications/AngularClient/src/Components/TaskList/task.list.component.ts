@@ -31,14 +31,14 @@ export class TaskListComponent implements OnInit {
     this.registerCommands();
   }
 
-  loadTasks(): void {
-    //this.tasks = this.taskService.List();
-    debugger
+  loadTasks(): void { 
     this.taskService.List().subscribe(result => {
       this.tasks = result;
       this.tasks.forEach(d => d.Mode = FormMode.Read)
     })
   }
+
+  
 
   newTask(): void {
     let task: TaskMdl = this.taskService.Default;
@@ -48,18 +48,23 @@ export class TaskListComponent implements OnInit {
   public OnTaskEvent(event: TaskEvent): void {
     let c: string = this.commandService.PREF_COMMAND;
     switch (event.Type) {
-      case TaskEventList.Save:
-        event.Task.Mode = FormMode.Read;
-
-        this.commandService.SetComand({ c: '' })
+      case TaskEventList.Save:        
+        this.taskService.Save(event.Task).subscribe(result => {
+          event.Task.Mode = FormMode.Read;
+          this.commandService.SetComand({ c: '' })
+        });     
         break;
       case TaskEventList.Edit:
         let id = this.commandService.PREF_ID;
         this.commandService.SetComand({ c: this.commandService.PREF_EDIT, id: event.Task.ID })
         break;
       case TaskEventList.Delete:
-        if (confirm("Do you want to delete this task?")) {
-          this.tasks = this.tasks.filter(d => d.ID != event.Task.ID);
+        if (!event.Task.ID) return;
+        if (confirm("Do you want to delete this task?")) {          
+          this.taskService.Delete(event.Task.ID).subscribe(result => {
+            this.tasks = this.tasks.filter(d => d.ID != event.Task.ID);
+          });
+          
         }
         break;
       default:
