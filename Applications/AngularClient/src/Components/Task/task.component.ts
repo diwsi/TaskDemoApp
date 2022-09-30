@@ -44,6 +44,7 @@ export class TaskComponent implements OnInit {
 
   MapUser(): void {
     if (!this.Task) return;
+    
     var user = this.users.find(d => d.ID == this.Task?.AssignedTo);
     if (user) {
       this.Task.User = user;
