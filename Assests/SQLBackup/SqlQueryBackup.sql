@@ -1,0 +1,165 @@
+USE [master]
+GO
+/****** Object:  Database [TaskDemo]    Script Date: 30/09/2022 22:20:03 ******/
+CREATE DATABASE [TaskDemo]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'TaskDemo', FILENAME = N'E:\SQLServer\MSSQL15.MSSQLSERVER\MSSQL\DATA\TaskDemo.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'TaskDemo_log', FILENAME = N'E:\SQLServer\MSSQL15.MSSQLSERVER\MSSQL\DATA\TaskDemo_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [TaskDemo] SET COMPATIBILITY_LEVEL = 110
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [TaskDemo].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [TaskDemo] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [TaskDemo] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [TaskDemo] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [TaskDemo] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [TaskDemo] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [TaskDemo] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [TaskDemo] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [TaskDemo] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [TaskDemo] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [TaskDemo] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [TaskDemo] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [TaskDemo] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [TaskDemo] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [TaskDemo] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [TaskDemo] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [TaskDemo] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [TaskDemo] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [TaskDemo] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [TaskDemo] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [TaskDemo] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [TaskDemo] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [TaskDemo] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [TaskDemo] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [TaskDemo] SET  MULTI_USER 
+GO
+ALTER DATABASE [TaskDemo] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [TaskDemo] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [TaskDemo] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [TaskDemo] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [TaskDemo] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [TaskDemo] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'TaskDemo', N'ON'
+GO
+ALTER DATABASE [TaskDemo] SET QUERY_STORE = OFF
+GO
+USE [TaskDemo]
+GO
+/****** Object:  Table [dbo].[Comments]    Script Date: 30/09/2022 22:20:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Comments](
+	[ID] [uniqueidentifier] NOT NULL,
+	[DateAdded] [datetime] NOT NULL,
+	[Comment] [nvarchar](3500) NULL,
+	[CommentType] [smallint] NULL,
+	[ReminderDate] [datetime] NULL,
+	[TaskID] [uniqueidentifier] NULL,
+ CONSTRAINT [PK_Comments] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Task]    Script Date: 30/09/2022 22:20:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Task](
+	[ID] [uniqueidentifier] NOT NULL,
+	[RequiredByDate] [datetime] NULL,
+	[Description] [nvarchar](3000) NULL,
+	[TaskStatus] [smallint] NULL,
+	[TaskType] [smallint] NULL,
+	[AssignedTo] [uniqueidentifier] NULL,
+	[NextActionDate] [datetime] NULL,
+ CONSTRAINT [PK_Task] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 30/09/2022 22:20:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[ID] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'fb775dde-1fae-4e35-9869-10d3d7d578b9', CAST(N'2022-09-30T21:32:50.003' AS DateTime), N'asd', 1, NULL, N'1e4bbc03-46ae-4c85-9f5f-1f9cfafce950')
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'e4c6dee8-89b6-408d-b180-1495d5740033', CAST(N'2022-09-30T21:42:47.547' AS DateTime), N'asd', 1, CAST(N'2022-09-19T00:00:00.000' AS DateTime), N'8b22fc63-8198-49ef-9e3b-7df797ae8cc1')
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'21eca01d-dd75-4329-afab-1c8bd0cc06a1', CAST(N'2022-09-30T20:01:47.000' AS DateTime), N'aTT as 52 aw', 1, CAST(N'2022-09-17T00:00:00.000' AS DateTime), N'1e4bbc03-46ae-4c85-9f5f-1f9cfafce950')
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'179e23d2-2f36-4ba8-a91d-3565b283302a', CAST(N'2022-09-30T21:11:15.000' AS DateTime), N'xcv1', 1, NULL, N'77fe6096-686b-4fb1-bffa-db5864c27bd5')
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'e7f65c5f-18f2-49a1-aa7b-5cdf6f6c8c8e', CAST(N'2022-09-30T21:42:39.467' AS DateTime), N'asd', 1, NULL, N'8b22fc63-8198-49ef-9e3b-7df797ae8cc1')
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'70b8605e-d06c-4962-a253-a18bb869e140', CAST(N'2022-09-30T22:17:54.000' AS DateTime), N'A Sample Comment', 1, CAST(N'2022-10-01T00:00:00.000' AS DateTime), N'4f649350-965c-4f11-b960-f1994e3fd2d8')
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'd411143b-532c-4eeb-aaa6-a4aa3bb379f4', CAST(N'2022-09-30T21:13:15.437' AS DateTime), N'vxcv', 1, CAST(N'2222-11-11T00:00:00.000' AS DateTime), N'7456ca02-4ce4-40d4-91b8-ef5a0106f67f')
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'635b3362-c722-4af9-bc81-d453e708892e', CAST(N'2022-09-30T21:04:33.000' AS DateTime), N'czxsad2', 2, CAST(N'2022-09-10T00:00:00.000' AS DateTime), N'77fe6096-686b-4fb1-bffa-db5864c27bd5')
+GO
+INSERT [dbo].[Comments] ([ID], [DateAdded], [Comment], [CommentType], [ReminderDate], [TaskID]) VALUES (N'ee6d38f0-8a08-4041-a225-ea6dc098bd1a', CAST(N'2022-09-30T21:14:47.487' AS DateTime), N'cvcv', 1, CAST(N'2022-09-17T00:00:00.000' AS DateTime), N'1f13b151-2bac-4b47-998c-3b23020827b7')
+GO
+INSERT [dbo].[Task] ([ID], [RequiredByDate], [Description], [TaskStatus], [TaskType], [AssignedTo], [NextActionDate]) VALUES (N'4f649350-965c-4f11-b960-f1994e3fd2d8', CAST(N'2022-09-30T00:00:00.000' AS DateTime), N'A Sample Task', 1, 1, N'42cbc40a-b3f1-4410-a460-1114908774b5', NULL)
+GO
+INSERT [dbo].[User] ([ID], [Name]) VALUES (N'42cbc40a-b3f1-4410-a460-1114908774b5', N'Engin Özdemir')
+GO
+INSERT [dbo].[User] ([ID], [Name]) VALUES (N'5c826273-61b4-4196-a607-9ab6f7946287', N'Mike Flanagan')
+GO
+INSERT [dbo].[User] ([ID], [Name]) VALUES (N'29d02bb3-14e6-4e22-a6ad-c7350b907539', N'Mikael Akerfeldt')
+GO
+USE [master]
+GO
+ALTER DATABASE [TaskDemo] SET  READ_WRITE 
+GO
