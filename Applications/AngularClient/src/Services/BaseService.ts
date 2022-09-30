@@ -1,3 +1,4 @@
+import { KeyValue } from "../Models/KeyValue";
 
 export abstract class BaseService<T> {
 
@@ -6,7 +7,7 @@ export abstract class BaseService<T> {
     this.temp = [];
   }
 
-  public List(): T[] {
+  public List(searchModel: KeyValue[] = []): T[] {
      
     return this.temp;
   }

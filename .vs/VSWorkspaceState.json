@@ -1,14 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
     "\\Applications",
-    "\\Applications\\AngularClient",
-    "\\Applications\\AngularClient\\src",
-    "\\Applications\\AngularClient\\src\\app",
-    "\\Applications\\AngularClient\\src\\Components",
-    "\\Applications\\AngularClient\\src\\Components\\Task",
-    "\\Applications\\AngularClient\\src\\Components\\TaskList"
+    "\\Services"
   ],
-  "SelectedNode": "\\Applications\\AngularClient\\src\\Components\\TaskList\\task.list.component.ts",
   "PreviewInSolutionExplorer": false
 }

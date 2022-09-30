@@ -13,8 +13,7 @@ import { BaseService } from './BaseService';
   public override Delete(id: string): void {
     this.temp = this.temp.filter(d => d.ID != id)
   }
-
-
+   
   public get Default(): TaskMdl {
     let ID: string = (Math.random())+"";     
     return {
@@ -24,4 +23,5 @@ import { BaseService } from './BaseService';
       TaskType: TaskTypeList.TaskTypeA
     }
   }
+
 }

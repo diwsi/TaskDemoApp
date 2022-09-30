@@ -52,6 +52,11 @@ export class TaskListComponent implements OnInit {
         let id = this.commandService.PREF_ID;
         this.commandService.SetComand({ c: this.commandService.PREF_EDIT, id: event.Task.ID })
         break;
+      case TaskEventList.Delete:
+        if (confirm("Do you want to delete this task?")) {
+          this.tasks = this.tasks.filter(d => d.ID != event.Task.ID);
+        }
+        break;
       default:
     }
   }
@@ -66,7 +71,7 @@ export class TaskListComponent implements OnInit {
           break;
         case this.commandService.PREF_EDIT:
           let task = this.tasks.find(d => d.ID == params[this.commandService.PREF_ID]);
-          if (task != null) task.Mode = FormMode.Read;
+          if (task != null) task.Mode = FormMode.Edit;
           break;
         default:
       }
