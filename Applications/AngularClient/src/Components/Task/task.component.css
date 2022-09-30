@@ -1,0 +1,19 @@
+.form-group
+{
+    margin-bottom:1rem;
+}
+
+.taskItem{
+    margin:10px;
+}
+
+.ctlButtons{
+    float:right;
+    font-size:1rem;
+}
+
+
+.ctlButtons .bi {
+    cursor:pointer;
+    margin:0.1rem
+}
