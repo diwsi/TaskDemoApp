@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2/GXIdlR7QZRFqhdUb/Op97NfziahOfK2g7FsmsaQgwh9fwovZRs9RTScQDVGPAhl92Ofe+IE328tCXpQmHu8g==",
+  "dgSpecHash": "cfa3EsXZCsYa/ShvJER3iiOv6RaNf9nzQeuHECKe6fFJ3s1dN7OMt6dUdU/9i/5D4J4g3kvz3PqccHNz1PIRuw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj",
+  "projectFilePath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

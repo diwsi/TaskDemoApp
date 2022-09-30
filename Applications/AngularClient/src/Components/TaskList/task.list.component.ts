@@ -8,6 +8,7 @@ import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { TaskEvent } from '../Task/TaskEvent';
 import { TaskEventList } from '../Task/TaskEventList';
 import { CommandService } from '../../Services/CommandService';
+import { UserService } from '../../Services/UserService';
 
 @Component({
   selector: 'task-list',
@@ -21,20 +22,21 @@ export class TaskListComponent implements OnInit {
 
   tasks: TaskMdl[] = [];
 
-  constructor(private taskService: TaskService, private commandService: CommandService, private route: ActivatedRoute) {
+  constructor(private taskService: TaskService, private userService: UserService, private commandService: CommandService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
 
     this.loadTasks();
-    this.registerCommands();
+   
   }
 
   loadTasks(): void { 
     this.taskService.List().subscribe(result => {
       this.tasks = result;
-      this.tasks.forEach(d => d.Mode = FormMode.Read)
+      this.tasks.forEach(d => d.Mode = FormMode.Read);
+      this.registerCommands();
     })
   }
 
@@ -74,7 +76,7 @@ export class TaskListComponent implements OnInit {
   registerCommands(): void {
 
     this.route.queryParams.subscribe(params => {
-      debugger
+      
       switch (params[this.commandService.PREF_COMMAND]) {
         case this.commandService.PREF_NEW:
           this.newTask();

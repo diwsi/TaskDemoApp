@@ -11,18 +11,14 @@ import { BaseService } from './BaseService';
 })
  export class TaskService extends BaseService<TaskMdl> {
   constructor(httpClient: HttpClient) {
-    debugger
+    
     super(httpClient);
     this.EndPoint ="/task/api/Task"
   }
- 
-
    
-   
-  public get Default(): TaskMdl {
-    let ID: string = (Math.random())+"";     
+  public get Default(): TaskMdl {   
     return {
-      ID: ID,
+     
       Mode: FormMode.Edit,
       TaskStatus: TaskStatusList.Active,
       TaskType: TaskTypeList.TaskTypeA

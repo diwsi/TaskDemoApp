@@ -8,7 +8,7 @@ export interface TaskMdl {
   CreatedDate?: Date,
   RequiredByDate?: Date,
   Description?: string,
-  TaskStatus?: TaskStatusList,
+  TaskStatus?: number,
   TaskType?: TaskTypeList,
   AssignedTo?: number,
   AssignedToName?: number,

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X4OG4VnADN1KsdoA0F8vZ4XkKqJU4WttfAIIWvYfQCw56cRqlymy4YOllLDiEqR/vKC3lGiCk0dKw1EM3xdyjQ==",
+  "dgSpecHash": "2sxmuNtWbkMp50zrur88HAb0uBj2ER+ogG1mEqp+it03qWXWxw0LYumRj8ZljxGLhVkekgGpaTAMIka9TgGmDw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj",
+  "projectFilePath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

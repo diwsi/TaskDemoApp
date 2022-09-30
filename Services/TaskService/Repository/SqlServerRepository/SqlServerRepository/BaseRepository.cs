@@ -48,7 +48,7 @@ namespace SqlServerRepository
         {
             if (command.CommandText.Contains(parameter))
             {
-                command.Parameters.AddWithValue(parameter, value);
+                command.Parameters.AddWithValue(parameter, value ?? DBNull.Value);
             }
         }
 
