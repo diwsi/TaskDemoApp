@@ -1,15 +1,21 @@
 import { KeyValue } from "../Models/KeyValue";
-
+import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from "rxjs";
 export abstract class BaseService<T> {
 
   public temp: T[];
-  constructor() {
+  public EndPoint: string = "";
+  constructor(private httpClient: HttpClient) {
     this.temp = [];
   }
+  private get basePath(): string {
+    return environment.API + this.EndPoint;
+  }
+  public List(searchModel: KeyValue[] = []): Observable<T[]> {
 
-  public List(searchModel: KeyValue[] = []): T[] {
-     
-    return this.temp;
+    return this.httpClient.get<T[]>(this.basePath);
+
   }
 
   public Save(model: T): T {
@@ -18,7 +24,7 @@ export abstract class BaseService<T> {
   }
 
   public Delete(id: string) {
-     
+
   }
 
 }

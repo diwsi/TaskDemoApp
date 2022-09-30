@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserMdl } from '../Models/UserMdl';
 import { BaseService } from './BaseService';
@@ -6,8 +7,8 @@ import { BaseService } from './BaseService';
   providedIn: 'root',
 })
 export class UserService extends BaseService<UserMdl> {
-  constructor() {
-    super();
+  constructor(httpClient: HttpClient) {
+    super(httpClient);
     this.temp = [
       {
         Name: "Engin Özdemir",

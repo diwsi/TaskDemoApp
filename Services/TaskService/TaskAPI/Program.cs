@@ -3,7 +3,7 @@ using SqlServerRepository;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
- 
+builder.Services.AddCors();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.PropertyNamingPolicy = null;
@@ -20,7 +20,11 @@ builder.Services.AddScoped<IRepository<Models.Task>, TaskRepository>(sp =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseCors(x => x
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .SetIsOriginAllowed(origin => true)
+                  .AllowCredentials());
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();

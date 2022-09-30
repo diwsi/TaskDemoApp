@@ -32,7 +32,12 @@ export class TaskListComponent implements OnInit {
   }
 
   loadTasks(): void {
-    this.tasks = this.taskService.List();
+    //this.tasks = this.taskService.List();
+    debugger
+    this.taskService.List().subscribe(result => {
+      this.tasks = result;
+      this.tasks.forEach(d => d.Mode = FormMode.Read)
+    })
   }
 
   newTask(): void {

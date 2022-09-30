@@ -14,6 +14,7 @@ export class CommandService {
   OnCommand: EventEmitter<Params> = new EventEmitter();
 
   constructor(private route: ActivatedRoute, private router: Router) {
+ 
     this.route.queryParams.subscribe(params => {
       this.OnCommand.emit(params);
     });

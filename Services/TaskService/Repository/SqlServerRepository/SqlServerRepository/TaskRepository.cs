@@ -110,7 +110,7 @@ namespace SqlServerRepository
             ,[TaskStatus] =@TaskStatus
             ,[TaskType] = @TaskType
             ,[UserID] = @UserID
-            ,[NextActionDate] = @NextActionDate
+            ,[NextActionDate] =  ( select top 1 MIN(ReminderDate) from Comments where TaskID=@ID and ReminderDate>GETDATE())
         WHERE ID=@ID";
 
             bindAndExecuteQuery(query, model);
