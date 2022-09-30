@@ -9,11 +9,12 @@ import { UserMdl } from '../../Models/UserMdl';
 import { UserService } from '../../Services/UserService';
 import { TaskEvent } from './TaskEvent';
 import { TaskEventList } from './TaskEventList';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'task',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css']
 })

@@ -19,17 +19,14 @@ import { UserService } from '../../Services/UserService';
 })
 export class TaskListComponent implements OnInit {
 
-
   tasks: TaskMdl[] = [];
 
-  constructor(private taskService: TaskService, private userService: UserService, private commandService: CommandService, private route: ActivatedRoute) {
+  constructor(private taskService: TaskService,  private commandService: CommandService, private route: ActivatedRoute) {
 
   }
 
-  ngOnInit(): void {
-
-    this.loadTasks();
-   
+  ngOnInit(): void { 
+    this.loadTasks(); 
   }
 
   loadTasks(): void { 
@@ -39,9 +36,7 @@ export class TaskListComponent implements OnInit {
       this.registerCommands();
     })
   }
-
-  
-
+   
   newTask(): void {
     let task: TaskMdl = this.taskService.Default;
     this.tasks.push(task);
@@ -53,11 +48,11 @@ export class TaskListComponent implements OnInit {
       case TaskEventList.Save:        
         this.taskService.Save(event.Task).subscribe(result => {
           event.Task.Mode = FormMode.Read;
+          event.Task.ID = result.ID;
           this.commandService.SetComand({ c: '' })
         });     
         break;
-      case TaskEventList.Edit:
-        let id = this.commandService.PREF_ID;
+      case TaskEventList.Edit: 
         this.commandService.SetComand({ c: this.commandService.PREF_EDIT, id: event.Task.ID })
         break;
       case TaskEventList.Delete:
@@ -73,10 +68,8 @@ export class TaskListComponent implements OnInit {
     }
   }
 
-  registerCommands(): void {
-
-    this.route.queryParams.subscribe(params => {
-      
+  registerCommands(): void { 
+    this.route.queryParams.subscribe(params => { 
       switch (params[this.commandService.PREF_COMMAND]) {
         case this.commandService.PREF_NEW:
           this.newTask();

@@ -9,6 +9,7 @@ namespace Models
         public string? Description { get; set; }
         public TaskStatus TaskStatus { get; set; }
         public TaskType TaskType { get; set; }
+        public Guid? AssignedTo { get; set; }
         public User? User { get; set; }
         public DateTime? NextActionDate { get; set; }
 

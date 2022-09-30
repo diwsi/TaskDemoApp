@@ -1,4 +1,49 @@
- <b>Comment</b>
 
+<div>
+  <div class="form-group">
+    <label>Comment *</label>
+    <textarea class="form-control" rows="3" [(ngModel)]="comment.Comment"></textarea> 
+  </div>
+ 
+    <div class="form-group">
+      <label>Comment Type</label>
+      <select class="form-control" [(ngModel)]="comment.CommentType">
+        <option [value]="commentType.CommentTypeA"> Type A</option>
+        <option [value]="commentType.CommentTypeB"> Type B</option>
+        <option [value]="commentType.CommentTypeC"> Type C</option>
+      </select>
+    </div>
+ 
+  <div class="form-group">
+    <label>Reminder Date</label>
+    <input rows="3" class="form-control" [(ngModel)]="comment.ReminderDate" type="date" />
+  </div>
+  <div class="form-group"> 
+    <button style="margin-top:5px" class="btn btn-success" [disabled]="!comment.Comment" (click)="Save()" > Save </button>
+  </div>
+</div>
 
+<hr />
+
+<table class="table table" >
+  <thead>
+    <tr>
+      <td ></td>
+      <th>Comment</th>
+      <th>Comment Type</th>
+      <th>Reminder Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let cm of comments">
+      <td><a  class="bi bi-pencil"></a> <i style="margin-left:0.5rem" class="bi bi-trash"></i></td>
+     
+      <td>{{cm.Comment}}</td>
+      <td>
+        {{cm.CommentType}}
+      </td>
+      <td>{{cm.ReminderDate | date:'dd.MM.yyy'}}</td>
+    </tr>
+  </tbody>
+</table>
 
