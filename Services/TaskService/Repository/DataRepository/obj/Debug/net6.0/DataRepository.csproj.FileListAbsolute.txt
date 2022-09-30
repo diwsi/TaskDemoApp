@@ -10,15 +10,3 @@ C:\Users\Diwsi\source\repos\TaskDemoApp\Services\TaskService\Repository\DataRepo
 C:\Users\Diwsi\source\repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\refint\DataRepository.dll
 C:\Users\Diwsi\source\repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\DataRepository.pdb
 C:\Users\Diwsi\source\repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\ref\DataRepository.dll
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\bin\Debug\net6.0\DataRepository.deps.json
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\bin\Debug\net6.0\DataRepository.dll
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\bin\Debug\net6.0\ref\DataRepository.dll
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\bin\Debug\net6.0\DataRepository.pdb
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\DataRepository.csproj.AssemblyReference.cache
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\DataRepository.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\DataRepository.AssemblyInfoInputs.cache
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\DataRepository.AssemblyInfo.cs
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\DataRepository.csproj.CoreCompileInputs.cache
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\DataRepository.dll
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\ref\DataRepository.dll
-C:\Users\engin.ozdemir\Source\Repos\TaskDemoApp\Services\TaskService\Repository\DataRepository\obj\Debug\net6.0\DataRepository.pdb
