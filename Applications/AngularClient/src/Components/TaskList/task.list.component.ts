@@ -19,6 +19,7 @@ import { UserService } from '../../Services/UserService';
 })
 export class TaskListComponent implements OnInit {
 
+  /**  List  of tasks */
   tasks: TaskMdl[] = [];
 
   constructor(private taskService: TaskService,  private commandService: CommandService, private route: ActivatedRoute) {
@@ -29,6 +30,7 @@ export class TaskListComponent implements OnInit {
     this.loadTasks(); 
   }
 
+  /**  get data from service */
   loadTasks(): void { 
     this.taskService.List().subscribe(result => {
       this.tasks = result;
@@ -36,12 +38,14 @@ export class TaskListComponent implements OnInit {
       this.registerCommands();
     })
   }
-   
+
+  /**  Create pseudo entry*/
   newTask(): void {
     let task: TaskMdl = this.taskService.Default;
     this.tasks.push(task);
   }
 
+  /**  handle child data events */
   public OnTaskEvent(event: TaskEvent): void {
     let c: string = this.commandService.PREF_COMMAND;
     switch (event.Type) {
@@ -54,6 +58,10 @@ export class TaskListComponent implements OnInit {
         break;
       case TaskEventList.Edit: 
         this.commandService.SetComand({ c: this.commandService.PREF_EDIT, id: event.Task.ID })
+        break;
+      case TaskEventList.Cancel:
+        event.Task.Mode = FormMode.Read;
+        this.commandService.SetComand({ id: "" })
         break;
       case TaskEventList.Delete:
         if (!event.Task.ID) return;
@@ -68,6 +76,7 @@ export class TaskListComponent implements OnInit {
     }
   }
 
+  /**  Map events to routes */
   registerCommands(): void { 
     this.route.queryParams.subscribe(params => { 
       switch (params[this.commandService.PREF_COMMAND]) {

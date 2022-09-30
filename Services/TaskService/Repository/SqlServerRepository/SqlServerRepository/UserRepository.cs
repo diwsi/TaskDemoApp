@@ -5,8 +5,16 @@ using System.Data.SqlClient;
 
 namespace SqlServerRepository
 {
+    /// <summary>
+    /// MSSql  user repository for 
+    /// </summary>
     public class UserRepository : BaseRepository, IRepository<User>
     {
+        /// <summary>
+        /// list users
+        /// </summary>
+        /// <param name="listParams"></param>
+        /// <returns></returns>
         public IEnumerable< User> List(Dictionary<string, string> listParams)
         {
             var query = @"SELECT *  FROM [dbo].[User]";

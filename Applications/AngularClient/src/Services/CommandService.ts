@@ -1,10 +1,13 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+
+/**  Routing params abstraction */
 @Injectable({
   providedIn: 'root',
 })
 export class CommandService {
+  /**  prefix list */
   public PREF_COMMAND: string = "c";
   public PREF_NEW: string = "new";
   public PREF_EDIT: string = "edit";
@@ -19,7 +22,7 @@ export class CommandService {
       this.OnCommand.emit(params);
     });
   }
-
+  /**  modify  router*/
   public SetComand(command: Params): void {
   
     this.router.navigate(

@@ -6,17 +6,29 @@ using Models;
 
 namespace TaskAPI.Controllers
 {
+    /// <summary>
+    /// user api end point
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
+        /// <summary>
+        /// data repository
+        /// </summary>
         private readonly IRepository< User> userRepository;
+
 
         public UserController(IRepository< User> userRepository)
         {
             this.userRepository = userRepository;
         }
-        // GET: api/<ValuesController>
+
+        /// <summary>
+        /// list of users
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get([FromQuery] Dictionary<string,string> filter)
         {

@@ -29,7 +29,7 @@
       </div>
       <div class="form-group">
         <label>Required by Date</label>
-        <input class="form-control" type="date" [(ngModel)]="Task.RequiredByDate">
+        <input class="form-control" type="date" [(ngModel)]="Task.RequiredByDateStr">
       </div>
       <div class="form-group">
         <label>Task Status</label>
@@ -60,7 +60,7 @@
     </div>
     <div class="card-footer">
       <button type="button" class="btn btn-primary" [disabled]="!Valid" (click)="Emit({Type:taskEventList.Save,Task:Task})">Save</button>
-      <button type="button" class="btn btn-danger" style="float:right" (click)="Task.Mode = formMode.Read">Cancel</button>
+      <button type="button" class="btn btn-danger" style="float:right" (click)="Emit({Type:taskEventList.Cancel,Task:Task})">Cancel</button>
     </div>
   </div>
   <ng-template #Required>

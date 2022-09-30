@@ -16,7 +16,7 @@
  
   <div class="form-group">
     <label>Reminder Date</label>
-    <input rows="3" class="form-control" [(ngModel)]="comment.ReminderDate" type="date" />
+    <input rows="3"  class="form-control"  [(ngModel)]="comment.ReminderDateStr" type="date" />
   </div>
   <div class="form-group"> 
     <button style="margin-top:5px" class="btn btn-success" [disabled]="!comment.Comment" (click)="Save()" > Save </button>
@@ -36,11 +36,14 @@
   </thead>
   <tbody>
     <tr  *ngFor="let cm of comments">
-      <td><a  class="bi bi-pencil"></a> <i style="margin-left:0.5rem" class="bi bi-trash"></i></td>
+      <td><a routerLink="/comment"  [queryParams]="{ edit: cm.ID  }" queryParamsHandling="merge"  class="bi bi-pencil"></a> <i style="margin-left:0.5rem" (click)="Delete(cm.ID)" class="bi bi-trash"></i></td>
      
       <td>{{cm.Comment}}</td>
       <td>
-        {{cm.CommentType}}
+        
+        <i *ngIf="cm.CommentType==commentType.CommentTypeA"  >Type A </i>
+        <i *ngIf="cm.CommentType==commentType.CommentTypeB" >Type B </i>
+        <i *ngIf="cm.CommentType==commentType.CommentTypeC" >Type C </i>
       </td>
       <td>{{cm.ReminderDate | date:'dd.MM.yyy'}}</td>
     </tr>

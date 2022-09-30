@@ -20,13 +20,20 @@ import { RouterModule } from '@angular/router';
 })
 export class TaskComponent implements OnInit {
 
+  /**  Display type of data*/
   formMode = FormMode;
+
   taskStatusList = TaskStatusList;
   taskTypeList = TaskTypeList;
   taskEventList = TaskEventList;
+
+  /** Context data */
   @Input() Task?: TaskMdl = undefined;
+
+  /** Pass commands to parent */
   @Output() OnEvent = new EventEmitter<TaskEvent>();
 
+  /**  user list to link task */
   users: UserMdl[] = [];
   constructor(  private userService: UserService) {
 
@@ -34,8 +41,12 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUsers();
+    if (this.Task?.RequiredByDate) {
+      this.Task.RequiredByDateStr = this.Task?.RequiredByDate.toString().split("T")[0];  
+    }
   }
 
+  /** Load users */
   loadUsers(): void {
     this.userService.userList.then(result => {
       this.users = result;
@@ -43,6 +54,7 @@ export class TaskComponent implements OnInit {
    
   }
 
+  /**  User entity to related task mapping */
   MapUser(): void {
     if (!this.Task) return;
     
@@ -52,12 +64,17 @@ export class TaskComponent implements OnInit {
     }
   }
 
+  /**  simple form validation   */
   get Valid(): boolean {
     return (this.Task?.Description && this.Task?.AssignedTo) != undefined
   }
 
+  /**  Clean up data before pass */
   Emit(event: TaskEvent): void {
-    debugger
+     
+    if (event.Task.RequiredByDateStr) {
+      event.Task.RequiredByDate = new Date(event.Task.RequiredByDateStr);
+    }
     event.Task.TaskStatus = Number(event.Task.TaskStatus);
     event.Task.TaskType = Number(event.Task.TaskType);
     this.OnEvent.emit(event);

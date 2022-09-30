@@ -6,7 +6,7 @@ import { finalize } from 'rxjs/operators';
 
 
 
-
+/**  Loading guard for ui. not my code  */
 @Injectable({
   providedIn: 'root'
 })

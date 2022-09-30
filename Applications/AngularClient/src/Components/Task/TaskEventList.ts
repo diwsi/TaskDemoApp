@@ -1,6 +1,8 @@
+ 
 export enum TaskEventList {
 
   Edit,
   Delete,
-  Save
+  Save,
+  Cancel
 }

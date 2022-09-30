@@ -7,6 +7,7 @@ export interface TaskMdl {
   ID?: string,
   CreatedDate?: Date,
   RequiredByDate?: Date,
+  RequiredByDateStr?: string,
   Description?: string,
   TaskStatus?: TaskStatusList,
   TaskType?: TaskTypeList,

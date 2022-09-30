@@ -5,24 +5,39 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TaskAPI.Controllers
 {
+    /// <summary>
+    /// Endpoint for task entity
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TaskController : ControllerBase
     {
+        /// <summary>
+        /// data repository
+        /// </summary>
         private readonly IRepository<Models.Task> taskRepository;
 
         public TaskController(IRepository<Models.Task> taskRepository)
         {
             this.taskRepository = taskRepository;
         }
-        // GET: api/<ValuesController>
+        
+        /// <summary>
+        /// list all tasks
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get([FromQuery] Dictionary<string,string> filter)
         {
             return Ok(taskRepository.List(filter));
         }
 
-        // GET api/<ValuesController>/5
+      /// <summary>
+      /// load spesific task 
+      /// </summary>
+      /// <param name="id"></param>
+      /// <returns></returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -41,7 +56,11 @@ namespace TaskAPI.Controllers
             return Ok(resp);
         }
 
-        // POST api/<ValuesController>
+      /// <summary>
+      /// save entity
+      /// </summary>
+      /// <param name="value"></param>
+      /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -56,7 +75,12 @@ namespace TaskAPI.Controllers
             return Ok(resp);
         }
  
-         
+      
+        /// <summary>
+        /// Remove Entiy
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

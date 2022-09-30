@@ -6,6 +6,7 @@ import { TaskStatusList } from '../Models/TaskStatusList';
 import { TaskTypeList } from '../Models/TaskTypeList';
 import { BaseService } from './BaseService';
 
+/**  Custom implamentation for Task api */
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +16,8 @@ import { BaseService } from './BaseService';
     super(httpClient);
     this.EndPoint ="/task/api/Task"
   }
-   
+
+  /**  Default data for testing  */
   public get Default(): TaskMdl {   
     return {
      

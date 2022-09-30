@@ -8,15 +8,27 @@ using System.Reflection.PortableExecutable;
 
 namespace SqlServerRepository
 {
+    /// <summary>
+    /// MsSql Reposityory for tasks
+    /// </summary>
     public class TaskRepository : BaseRepository, IRepository<Models.Task>
     {
 
-
+        /// <summary>
+        /// get single Task
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Models.Task? Get(Guid id)
         {
             return List(new Dictionary<string, string>() { { "ID", id.ToString() } })?.FirstOrDefault();
         }
 
+        /// <summary>
+        /// load tasks
+        /// </summary>
+        /// <param name="listParams"></param>
+        /// <returns></returns>
         public IEnumerable<Models.Task> List(Dictionary<string, string> listParams)
         {
             var query = @"select t.*, u.Name 
@@ -64,7 +76,11 @@ namespace SqlServerRepository
 
         }
 
-      
+      /// <summary>
+      /// update or insert
+      /// </summary>
+      /// <param name="model"></param>
+      /// <returns></returns>
         public Models.Task Upsert(Models.Task model)
         {
             if (!model.HasID)
@@ -75,6 +91,11 @@ namespace SqlServerRepository
             return update(model);
         }
 
+        /// <summary>
+        /// inser new task
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         Models.Task insert(Models.Task model)
         {
             var query = @"INSERT INTO [dbo].[Task]
@@ -101,7 +122,11 @@ namespace SqlServerRepository
 
         }
 
-
+        /// <summary>
+        /// update task
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         Models.Task update(Models.Task model)
         {
             var query = @"UPDATE [dbo].[Task]
@@ -120,6 +145,11 @@ namespace SqlServerRepository
 
         }
 
+        /// <summary>
+        /// remove task
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool Delete(Guid id)
         {
             var query = @"delete FROM [TaskDemo].[dbo].[Task] where ID=@ID";
@@ -127,18 +157,25 @@ namespace SqlServerRepository
             return true;
         }
 
+        /// <summary>
+        /// map parameters and execute
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         private int bindAndExecuteQuery(string query, Models.Task model)
         {
             var command = bindQuery(query, model);
             return Execute(command);
         }
 
-        private SqlDataReader bindAndExecuteReader(string query, Models.Task model)
-        {
-            var command = bindQuery(query, model);
-            return ExecuteReader(command);
-        }
-
+  
+        /// <summary>
+        /// map parameter
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         private SqlCommand bindQuery(string query, Models.Task model)
         {
             var command = new SqlCommand(query);

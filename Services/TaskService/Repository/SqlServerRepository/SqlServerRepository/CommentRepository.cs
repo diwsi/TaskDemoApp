@@ -5,8 +5,17 @@ using System.Data.SqlClient;
 
 namespace SqlServerRepository
 {
+    /// <summary>
+    /// MSSql repository for Comments
+    /// </summary>
     public class CommentRepository : BaseRepository, IRepository<Comments>
     {
+
+        /// <summary>
+        /// load commetnts 
+        /// </summary>
+        /// <param name="listParams"></param>
+        /// <returns></returns>
         public IEnumerable<Comments> List(Dictionary<string, string> listParams)
         {
             var query = @"SELECT *  FROM [dbo].[Comments]";
@@ -30,7 +39,7 @@ namespace SqlServerRepository
                     var rdr = command.ExecuteReader();
                     while (rdr.Read())
                     {
-
+                       
                         result.Add(new Comments()
                         {
                             ID = rdr.IsDBNull("ID") ? Guid.Empty : Guid.Parse(rdr["ID"].ToString()),
@@ -49,22 +58,30 @@ namespace SqlServerRepository
 
         }
 
-
+        /// <summary>
+        /// remove entity
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var query = @"delete FROM  [dbo].[Comments] where ID=@ID";
+            bindAndExecuteQuery(query, new Comments() { ID = id });
+            return true;
         }
  
-        public User Upsert(Comments model)
-        {
-            throw new NotImplementedException();
-        }
+     
 
         Comments? IRepository<Comments>.Get(Guid id)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        ///  insert or update
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         Comments IRepository<Comments>.Upsert(Comments model)
         {
             if (!model.HasID)
@@ -75,6 +92,11 @@ namespace SqlServerRepository
             return update(model);
         }
 
+        /// <summary>
+        /// insert comment
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         Comments insert(Comments model)
         {
             var query = @"INSERT INTO [dbo].[Comments]
@@ -99,12 +121,16 @@ namespace SqlServerRepository
 
         }
 
-
+        /// <summary>
+        /// update comment
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         Comments update(Comments model)
         {
             var query = @"UPDATE [dbo].[Comments]
                        SET  
-                          ,[DateAdded] = @DateAdded
+                           [DateAdded] = @DateAdded
                           ,[Comment] =@Comment
                           ,[CommentType] = @CommentType
                           ,[ReminderDate] = @ReminderDate
@@ -117,18 +143,26 @@ namespace SqlServerRepository
 
         }
 
+        /// <summary>
+        /// bind params and execute query
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         private int bindAndExecuteQuery(string query, Comments model)
         {
             var command = bindQuery(query, model);
             return Execute(command);
         }
 
-        private SqlDataReader bindAndExecuteReader(string query, Comments model)
-        {
-            var command = bindQuery(query, model);
-            return ExecuteReader(command);
-        }
+ 
 
+        /// <summary>
+        /// map parameters to query
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         private SqlCommand bindQuery(string query, Comments model)
         {
             var command = new SqlCommand(query);

@@ -1,6 +1,7 @@
 ﻿using DataRepository;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using SqlServerRepository;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,29 +17,7 @@ namespace TaskAPI.Controllers
         {
             this.commentRepository = commentRepository;
         }
-
-
-        [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Get(Guid id)
-        {
-            if (id == default(Guid))
-            {
-                return BadRequest();
-            }
-            var resp = commentRepository.List(new Dictionary<string, string>()
-            {
-                { "TaskID", id.ToString() }
-            });
-            if (resp == null)
-            {
-                return NotFound();
-            }
-            return Ok(resp);
-        }
-
+         
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -58,6 +37,19 @@ namespace TaskAPI.Controllers
         public IActionResult Get([FromQuery] Dictionary<string, string> filter)
         {
             return Ok(commentRepository.List(filter));
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Delete(Guid id)
+        {
+            if (id == default(Guid))
+            {
+                return BadRequest();
+            }
+            var resp = commentRepository.Delete(id);
+            return Ok();
         }
 
     }

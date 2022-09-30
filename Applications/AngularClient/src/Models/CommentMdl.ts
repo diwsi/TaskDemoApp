@@ -6,4 +6,5 @@ readonly  ID?: string,
   Comment?: string,
   CommentType?: CommentTypeList,
   ReminderDate?: Date
+  ReminderDateStr?: string
 } 

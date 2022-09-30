@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataRepository
 {
+    /// <summary>
+    /// Generc form of repository
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IRepository<T> where T : class
     {
         public T? Get(Guid id);

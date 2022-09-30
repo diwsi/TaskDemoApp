@@ -1,7 +1,7 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Values;
-
+///// This is a Gateway for microservice purposes
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("configuration.json");
