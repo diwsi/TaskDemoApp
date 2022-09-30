@@ -4,7 +4,7 @@ A demo application for demonstration purposes. Simple task and comment applicati
 To run app...
 
 <b>Database</b><br>
-I used MsSql server and a backup file  and database script located at Assests/SQLBackup. Backup file contains some necessary data for demo. Connected with windows authentication and connection string of application is located at <b>Services\TaskService\TaskAPI\appsettings.json</b>
+I used MsSql server and a backup file  and database script located at Assets/SQLBackup. Backup file contains some necessary data for demo. Connected with windows authentication and connection string of application is located at <b>Services\TaskService\TaskAPI\appsettings.json</b>
 
 
 <b>Services:<b></br>
