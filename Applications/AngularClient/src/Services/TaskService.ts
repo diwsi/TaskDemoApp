@@ -15,9 +15,7 @@ import { BaseService } from './BaseService';
     super(httpClient);
     this.EndPoint ="/task/api/Task"
   }
-  public override Delete(id: string): void {
-    this.temp = this.temp.filter(d => d.ID != id)
-  }
+ 
 
    
    

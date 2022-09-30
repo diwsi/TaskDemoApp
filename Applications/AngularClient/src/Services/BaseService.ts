@@ -18,13 +18,13 @@ export abstract class BaseService<T> {
 
   }
 
-  public Save(model: T): T {
-    this.temp.push(model);
-    return model;
+  public Save(model: T): Observable<T> {
+    return this.httpClient.post<T>(this.basePath, model);        
   }
 
-  public Delete(id: string) {
-
+  public Delete(id: string): Observable<object> {
+     
+    return this.httpClient.delete(this.basePath + "/" + id);    
   }
 
 }

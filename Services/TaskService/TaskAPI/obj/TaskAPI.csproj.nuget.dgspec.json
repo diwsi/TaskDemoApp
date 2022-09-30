@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\TaskAPI.csproj": {}
+    "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\TaskAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj": {
+    "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj",
+        "projectUniqueName": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj",
         "projectName": "DataRepository",
-        "projectPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj",
-        "packagesPath": "C:\\Users\\Diwsi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\obj\\",
+        "projectPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj",
+        "packagesPath": "C:\\Users\\engin.ozdemir\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Diwsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\engin.ozdemir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -48,8 +48,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -58,24 +57,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj": {
+    "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\Diwsi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\obj\\",
+        "projectPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\engin.ozdemir\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Diwsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\engin.ozdemir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -106,8 +105,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -116,24 +114,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj": {
+    "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj",
+        "projectUniqueName": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj",
         "projectName": "SqlServerRepository",
-        "projectPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj",
-        "packagesPath": "C:\\Users\\Diwsi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\obj\\",
+        "projectPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj",
+        "packagesPath": "C:\\Users\\engin.ozdemir\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Diwsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\engin.ozdemir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -147,11 +145,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj": {
-                "projectPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj"
+              "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj": {
+                "projectPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\DataRepository\\DataRepository.csproj"
               },
-              "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj"
+              "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\Models\\Models\\Models.csproj"
               }
             }
           }
@@ -177,8 +175,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -187,24 +184,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\TaskAPI.csproj": {
+    "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\TaskAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\TaskAPI.csproj",
+        "projectUniqueName": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\TaskAPI.csproj",
         "projectName": "TaskAPI",
-        "projectPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\TaskAPI.csproj",
-        "packagesPath": "C:\\Users\\Diwsi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\obj\\",
+        "projectPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\TaskAPI.csproj",
+        "packagesPath": "C:\\Users\\engin.ozdemir\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\TaskAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Diwsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\engin.ozdemir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -218,8 +215,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj": {
-                "projectPath": "C:\\Users\\Diwsi\\source\\repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj"
+              "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj": {
+                "projectPath": "C:\\Users\\engin.ozdemir\\Source\\Repos\\TaskDemoApp\\Services\\TaskService\\Repository\\SqlServerRepository\\SqlServerRepository\\SqlServerRepository.csproj"
               }
             }
           }
@@ -245,8 +242,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -258,7 +254,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
