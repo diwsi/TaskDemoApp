@@ -3,7 +3,7 @@
 
   <div class="card" style="width: 18rem;" *ngIf="Task.Mode==formMode.Read">
     <div class="card-body">
-      <h5 class="card-title"  >{{Task.Description}} <span class="ctlButtons"><i class="bi bi-pencil" (click)="OnEvent.emit({Type:taskEventList.Edit,Task:Task})"></i> <i class="bi bi-tr"></i> <i (click)="OnEvent.emit({Type:taskEventList.Delete,Task:Task})" class="bi bi-trash"></i> </span></h5> 
+      <h5 class="card-title"  >{{Task.Description}} <span class="ctlButtons"><i class="bi bi-pencil" (click)="Emit({Type:taskEventList.Edit,Task:Task})"></i> <i class="bi bi-tr"></i> <i (click)="Emit({Type:taskEventList.Delete,Task:Task})" class="bi bi-trash"></i> </span></h5> 
       <h6 class="card-subtitle mb-2 text-muted">{{Task.User?.Name}} </h6>
       <p class="card-text">   <ng-container *ngTemplateOutlet="Status"></ng-container>  <i *ngIf="Task.RequiredByDate"> ({{Task.RequiredByDate}})</i> </p>
    
@@ -41,17 +41,19 @@
       </div>
       <div class="form-group">
         <label>Assigned To</label>
-        <select class="form-control" [(ngModel)]="Task.AssignedTo" (change)="MapUser()">
+        <select *ngIf="users && users.length" class="form-control" [(ngModel)]="Task.AssignedTo" (change)="MapUser()">
           <option *ngFor="let user of users" [value]="user.ID"> {{user.Name}}</option>
 
         </select>
+        <i *ngIf="!users?.length" class="badge badge-danger">No user in DB!</i>
         <ng-container *ngIf="!Task.AssignedTo">   <ng-container *ngTemplateOutlet="Required"></ng-container></ng-container>
 
       </div>
 
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-primary" [disabled]="!Valid" (click)="OnEvent.emit({Type:taskEventList.Save,Task:Task})">Save</button>
+      <button type="button" class="btn btn-primary" [disabled]="!Valid" (click)="Emit({Type:taskEventList.Save,Task:Task})">Save</button>
+      <button type="button" class="btn btn-danger"  style="float:right" (click)="Task.Mode = formMode.Read">Cancel</button>
     </div>
   </div>
   <ng-template #Required>

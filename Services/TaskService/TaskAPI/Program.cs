@@ -15,6 +15,11 @@ builder.Services.AddScoped<IRepository<Models.Task>, TaskRepository>(sp =>
     
     return new TaskRepository(builder.Configuration["ConnectionString"]);
 });
+builder.Services.AddScoped<IRepository<Models.User>, UserRepository>(sp =>
+{
+
+    return new UserRepository(builder.Configuration["ConnectionString"]);
+});
 // Add services to the container.
 
 var app = builder.Build();

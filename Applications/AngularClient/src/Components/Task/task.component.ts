@@ -36,25 +36,15 @@ export class TaskComponent implements OnInit {
   }
 
   loadUsers(): void {
-   // this.users = this.users.length ? this.users : this.userService.List();
-    this.users= [
-      {
-        Name: "Engin Özdemir",
-        ID: "e1"
-      },
-      {
-        Name: "Emine Özdemir",
-        ID: "e2"
-      },
-      {
-        Name: "Emrah Aral",
-        ID: "e3"
-      }
-    ]
+    this.userService.userList.then(result => {
+      this.users = result;
+    })
+   
   }
 
   MapUser(): void {
     if (!this.Task) return;
+    
     var user = this.users.find(d => d.ID == this.Task?.AssignedTo);
     if (user) {
       this.Task.User = user;
@@ -63,5 +53,12 @@ export class TaskComponent implements OnInit {
 
   get Valid(): boolean {
     return (this.Task?.Description && this.Task?.AssignedTo) != undefined
+  }
+
+  Emit(event: TaskEvent): void {
+    debugger
+    event.Task.TaskStatus = Number(event.Task.TaskStatus);
+    event.Task.TaskType = Number(event.Task.TaskType);
+    this.OnEvent.emit(event);
   }
 }

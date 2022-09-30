@@ -1,19 +1,16 @@
 ﻿using DataRepository;
 using Models;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Reflection;
-using System.Reflection.PortableExecutable;
 
 namespace SqlServerRepository
 {
-    public class UserRepository : BaseRepository, IRepository<Models.User>
+    public class UserRepository : BaseRepository, IRepository<User>
     {
         public IEnumerable< User> List(Dictionary<string, string> listParams)
         {
             var query = @"SELECT *  FROM [dbo].[User]";
-            var result = new List<>();
+            var result = new List<User>();
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -21,7 +18,7 @@ namespace SqlServerRepository
                 var IDFilter = listParams.FirstOrDefault(d => d.Key == "ID");
                 if (!string.IsNullOrEmpty(IDFilter.Value))
                 {
-                    command.CommandText += " where t.ID=@ID";
+                    command.CommandText += " where  ID=@ID";
                     BindParam(command, "@ID", IDFilter.Value);
                 }
 
@@ -34,20 +31,15 @@ namespace SqlServerRepository
                     while (rdr.Read())
                     {
 
-                        result.Add(new Models.Task()
+                        result.Add(new User()
                         {
                             ID = rdr.IsDBNull("ID") ? Guid.Empty : Guid.Parse(rdr["ID"].ToString()),
-                            Description = rdr.IsDBNull("Description") ? string.Empty : rdr["Description"].ToString(),
-                            NextActionDate = rdr.IsDBNull("NextActionDate") ? null : DateTime.Parse(rdr["NextActionDate"].ToString()),
-                            RequiredByDate = rdr.IsDBNull("RequiredByDate") ? null : DateTime.Parse(rdr["RequiredByDate"].ToString()),
-                            TaskStatus = rdr.IsDBNull("TaskStatus") ? Models.TaskStatus.Active : (Models.TaskStatus)int.Parse(rdr["TaskStatus"].ToString()),
-                            TaskType = rdr.IsDBNull("TaskType") ? TaskType.TaskTypeA : (TaskType)int.Parse(rdr["TaskType"].ToString()),
-                            User = rdr.IsDBNull("Name") ? null : new User() { Name = rdr["Name"].ToString() }
+                            Name = rdr.IsDBNull("Name") ? string.Empty : rdr["Name"].ToString()
+                       
                         });
 
                     }
-
-
+                     
                 }
             }
             return result;
@@ -68,6 +60,12 @@ namespace SqlServerRepository
         public User Upsert(User model)
         {
             throw new NotImplementedException();
+        }
+
+        public UserRepository(string connectionString)
+        {
+            ConnectionString = connectionString;
+
         }
     }
 }
