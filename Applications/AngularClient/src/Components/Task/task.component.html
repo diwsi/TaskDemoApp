@@ -1,9 +1,9 @@
 <div class="taskItem" *ngIf="Task">
 
 
-  <div class="card" style="width: 18rem;" *ngIf="Task.Mode==formMode.Read">
+  <div class="card" style="width: 18rem;" *ngIf="Task.Mode!=formMode.Edit">
     <div class="card-body">
-      <h5 class="card-title">{{Task.Description}} <span class="ctlButtons"><i class="bi bi-pencil" (click)="Emit({Type:taskEventList.Edit,Task:Task})"></i> <i class="bi bi-tr"></i> <i (click)="Emit({Type:taskEventList.Delete,Task:Task})" class="bi bi-trash"></i> </span></h5>
+      <h5 class="card-title">{{Task.Description}} <span *ngIf="Task.Mode!=formMode.Comment" class="ctlButtons"><i class="bi bi-pencil" (click)="Emit({Type:taskEventList.Edit,Task:Task})"></i> <i class="bi bi-tr"></i> <i (click)="Emit({Type:taskEventList.Delete,Task:Task})" class="bi bi-trash"></i> </span></h5>
       <h6 class="card-subtitle mb-2 text-muted">{{Task.User?.Name}} </h6>
       <p class="card-text">
         <ng-container *ngTemplateOutlet="Status"></ng-container>  <i *ngIf="Task.RequiredByDate">
@@ -14,7 +14,7 @@
         </i>
       </p>
 
-      <a *ngIf="Task.ID"  routerLink="/comment" class="card-link" [queryParams]="{id: Task.ID}" >Comments</a>
+      <a *ngIf="Task.ID && Task.Mode!=formMode.Comment"  routerLink="/comment" class="card-link" [queryParams]="{id: Task.ID}" >Comments</a>
        
     </div>
   </div>

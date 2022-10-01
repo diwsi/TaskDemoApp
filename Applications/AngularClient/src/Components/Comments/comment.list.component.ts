@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';  
+import { CommonModule } from '@angular/common';  
 import { TaskComponent } from '../Task/task.component'; 
 import { ActivatedRoute,   RouterModule } from '@angular/router'; 
 import { CommandService } from '../../Services/CommandService';
@@ -7,6 +7,9 @@ import { CommentService } from '../../Services/CommentService';
 import { CommentMdl } from '../../Models/CommentMdl';
 import { CommentTypeList } from '../../Models/CommentTypeList';
 import { FormsModule } from '@angular/forms';
+import { TaskService } from '../../Services/TaskService';
+import { TaskMdl } from '../../Models/TaskMdl';
+import { FormMode } from '../../Models/FormMode';
 
 @Component({
   selector: 'comments',
@@ -22,15 +25,29 @@ export class CommentListComponent implements OnInit {
   comments: CommentMdl[] = [];
   /** cuurnet comment to edit */
   comment: CommentMdl = {}
-
+  Task: TaskMdl | null = null;
   commentType = CommentTypeList;
-  constructor(private commentService: CommentService, private commandService: CommandService, private route: ActivatedRoute) {
+  constructor(private commentService: CommentService, private taskService: TaskService, private commandService: CommandService, private route: ActivatedRoute) {
 
   }
 
-  ngOnInit(): void {
-     
+  ngOnInit(): void {     
     this.registerCommands();
+    
+  }
+
+  loadTask( ): void {
+
+    if (!this.TaskID) {
+      return;
+    }
+
+    this.taskService.Get(this.TaskID).subscribe(result => {
+       
+      this.Task = result;
+      this.Task.Mode = FormMode.Comment;
+    });
+
   }
 
   /**  List  Comments */
@@ -41,6 +58,7 @@ export class CommentListComponent implements OnInit {
     }
      
     this.TaskID = id;
+    this.loadTask();
     this.commentService.List("?TaskID="+id).subscribe(result => {
       this.comments = result
       this.edit(editID);
@@ -49,7 +67,7 @@ export class CommentListComponent implements OnInit {
 
   /**  Edist a Comment */
   edit(id: string | undefined): void {
-    debugger
+     
     if (!id) {
       return;
     }

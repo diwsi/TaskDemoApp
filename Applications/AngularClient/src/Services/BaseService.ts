@@ -18,9 +18,12 @@ export abstract class BaseService<T> {
 
   /**  list of fetched data */
   public List(parameters: string=""): Observable<T[]> {
-    let params: { id: 2 };
+   
     return this.httpClient.get<T[]>(this.basePath + parameters);
-
+  }
+  /**   Get single entity */
+  public Get(id: string ): Observable<T> {
+    return this.httpClient.get<T>(this.basePath +"/"+ id);
   }
 
   /**  post to save */
@@ -29,8 +32,7 @@ export abstract class BaseService<T> {
   }
 
   /** delete  entry*/
-  public Delete(id: string): Observable<object> {
-     
+  public Delete(id: string): Observable<object> { 
     return this.httpClient.delete(this.basePath + "/" + id);    
   }
 
